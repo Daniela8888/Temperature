@@ -26,6 +26,7 @@ $(document).ready(function() {
 
 				$('#content').empty();
 				var table=$("<table/>");
+				table.addClass("Temperature");
 
 
 				var tr=getLine('City',city);
@@ -40,6 +41,9 @@ $(document).ready(function() {
 				var tr=getLine('Humidity',data.main.humidity+' %');
 				table.append(tr);
 
+				tr=getLine("Description", data.weather[0].description);
+         	    table.append(tr);
+
 
 				var tr=getLine('Pressure',data.main.pressure+' hPa');
 				table.append(tr);
@@ -48,24 +52,23 @@ $(document).ready(function() {
 				$("#content").append(table);
 
 				if($("#details").is(':checked')){
-					var tr=getLine('Sunrise',data.sys.sunrise);
-					table.append(tr);
-
-					var tr=getLine('Sunset',data.sys.sunset);
-					table.append(tr);
+					
 
 					var tr=getLine('Wind',data.wind.speed);
 					table.append(tr);
 
-					var tr=getLine('MinTemp',data.main.temp_min);
+					var tr=getLine('MinTemp',data.main.temp_min-273.15);
 					table.append(tr);
 
-					var tr=getLine('MaxTemp',data.main.temp_max);
+					var tr=getLine('MaxTemp',data.main.temp_max-273.15);
 					table.append(tr);
 
-					var tr=getLine('Visibility',data.main.pressure+'hPa');
-					table.append(tr);
+					var tr=getLine("Sunrise", new Date(data.sys.sunrise*1000).getHours()+':'+new Date(data.sys.sunrise*1000).getMinutes());
+              		table.append(tr);
 
+              		var	tr=getLine("Sunset", new Date(data.sys.sunset*1000).getHours()+':'+new Date(data.sys.sunset*1000).getMinutes());
+            		  table.append(tr);
+            		
 				}
 
 
