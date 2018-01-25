@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$("#btnOk").click(function(){
+	$("#btnokej").click(function(){
 		var city=$("#city").val();
 		var code=$("#code").val();
 		if(city.length>1){
@@ -18,31 +18,55 @@ $(document).ready(function() {
 				$("#main").html("ERROR");
 				//vypis chyby
 			},
+
 			dataType: 'json',
 			success: function(data){
 				console.log("temp:"+data.main.temp);
-				console.log("desc:"+data.weather.main);
-				$('#main').empty();
+				console.log("desc:"+data.weather[0].description);
+
+				$('#content').empty();
 				var table=$("<table/>");
+
+
 				
 				var tr=getLine('City',city);
 				table.append(tr);
 
-				var tr=getLine('Country',code);
+				var tr=getLine('Country',data.sys.country);
 				table.append(tr);
 
-				tr=getLine("Temperature",data.main.temp-273.15,1);
+				var tr=getLine('Temperature',data.main.temp-273.15);
 				table.append(tr);
 
-				tr=getLine("Humidity",data.main.humidity+' %');
+				var tr=getLine('Humidity',data.main.humidity+' %');
 				table.append(tr);
 
 
-				tr=getLine("pressure",data.main.pressure+' hPa');
+				var tr=getLine('Pressure',data.main.pressure+' hPa');
 				table.append(tr);
+
+
+				$("#content").append(table);
 
 				if($("#details").is(':checked')){
-					tr=getLine
+					var tr=getLine('Sunrise',data.sys.sunrise);
+					table.append(tr);
+
+					var tr=getLine('Sunset',data.sys.sunset);
+					table.append(tr);
+
+					var tr=getLine('Wind',data.wind.speed);
+					table.append(tr);
+
+					var tr=getLine('MinTemp',data.main.temp_min);
+					table.append(tr);
+
+					var tr=getLine('MaxTemp',data.main.temp_max);
+					table.append(tr);
+
+					var tr=getLine('Visibility',data.main.pressure+'hPa');
+					table.append(tr);
+
 				}
 
 
@@ -59,6 +83,14 @@ $(document).ready(function() {
 	});
 
 	function getLine(data1,data2){
+		var tr=$("<tr/>");
+		var td1=$("<td/>");
+		$(td1).append(data1);
+		var td2=$("<td/>");
+		$(td2).append(data2);
+		tr.append(td1);
+		tr.append(td2);
+		return tr;
 
 	}
 	});
