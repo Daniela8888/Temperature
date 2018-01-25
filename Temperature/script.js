@@ -28,7 +28,6 @@ $(document).ready(function() {
 				var table=$("<table/>");
 
 
-				
 				var tr=getLine('City',city);
 				table.append(tr);
 
