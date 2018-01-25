@@ -2,34 +2,46 @@
 <HTML>
 <HEAD>
 	<title>Temperature</title>
-<link href="" rel="stylesheet">
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+<link rel="stylesheet" href="style.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+
+
+
+
 </HEAD>
 
 <body>
 
-<table >
-<tr>
-	<td>City: <input type="text"></td>
-	<td>Country Code: <input type="text"></td>
-</tr>
-</table>
+<div class="container">
+<div class="row">
+<div class="col-sm-3"></div>
+<div class="col-sm-6">
+<h1>TEMPERATURE</h1>
+
 
 <table>
+<tr><td><label>City: </label><input type="text" placeholder="type city" id="city" size="12"></td>
+	<td><label>Country Code:</label> <input type="text" placeholder="code" id="code" size="4"></td></tr>
+
+
+
 	<tr>
-		<td> <INPUT type="checkbox"> Details</td>
+		<td> <INPUT type="checkbox" id="details"><label>Details</label></td>
 
-	</tr>
+		<td><input type="button" value="get" id="btnOk" value="get data" class="btn btn-success"></input></td></tr> 
 </table>
+</div>
 
-	
-
-
-
-</table>
-	
+<div class="col-sm-3"></div>
+</div>
 
 
+ 
+</body>
+</html>
 
 
 
