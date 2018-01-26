@@ -68,7 +68,9 @@ $(document).ready(function() {
 
               		var	tr=getLine("Sunset", new Date(data.sys.sunset*1000).getHours()+':'+new Date(data.sys.sunset*1000).getMinutes());
             		  table.append(tr);
-            		
+
+            		var tr=getLine("Google Maps", "<a target='_blank' href='https://www.google.com/maps/search/?api=1&query=" + data.coord.lat + "," + data.coord.lon + "'>"+city+"</a>");
+            		 table.append(tr);
 				}
 
 
